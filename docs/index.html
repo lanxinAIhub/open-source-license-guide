@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI 开源许可证选择指南</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🔐 AI 开源许可证交互式指南</h1>
+      <p class="subtitle">回答 4 个问题，AI 帮你找到最适合的开源许可证</p>
+    </header>
+
+    <!-- 许可证对比表 -->
+    <section class="license-table-section">
+      <h2>📊 主流许可证一览</h2>
+      <div class="license-table-wrapper">
+        <table class="license-table">
+          <thead>
+            <tr>
+              <th>许可证</th>
+              <th>类型</th>
+              <th>核心特点</th>
+              <th>商业使用</th>
+              <th>专利授权</th>
+              <th>传染强度</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>MIT</strong></td>
+              <td><span class="badge permissive">宽松</span></td>
+              <td>极简，仅需保留版权声明</td>
+              <td>✅ 完全允许</td>
+              <td>❌ 无</td>
+              <td><span class="strength s1">★</span></td>
+            </tr>
+            <tr>
+              <td><strong>Apache 2.0</strong></td>
+              <td><span class="badge permissive">宽松</span></td>
+              <td>含专利授权，明确专利使用</td>
+              <td>✅ 完全允许</td>
+              <td>✅ 有</td>
+              <td><span class="strength s1">★</span></td>
+            </tr>
+            <tr>
+              <td><strong>BSD 3-Clause</strong></td>
+              <td><span class="badge permissive">宽松</span></td>
+              <td>类似MIT，禁止用作者推广</td>
+              <td>✅ 完全允许</td>
+              <td>❌ 无</td>
+              <td><span class="strength s1">★</span></td>
+            </tr>
+            <tr>
+              <td><strong>GPL v3</strong></td>
+              <td><span class="badge copyleft">传染</span></td>
+              <td>要求衍生作品必须开源</td>
+              <td>⚠️ 需开源</td>
+              <td>✅ 有</td>
+              <td><span class="strength s4">★★★★</span></td>
+            </tr>
+            <tr>
+              <td><strong>AGPL v3</strong></td>
+              <td><span class="badge strong-copyleft">强传染</span></td>
+              <td>网络使用也需开源（如SaaS）</td>
+              <td>⚠️ 需开源</td>
+              <td>✅ 有</td>
+              <td><span class="strength s5">★★★★★</span></td>
+            </tr>
+            <tr>
+              <td><strong>LGPL</strong></td>
+              <td><span class="badge lgpl">中等</span></td>
+              <td>允许闭源项目动态链接调用</td>
+              <td>⚠️ 需链接方式合规</td>
+              <td>✅ 有</td>
+              <td><span class="strength s3">★★★</span></td>
+            </tr>
+            <tr>
+              <td><strong>MPL 2.0</strong></td>
+              <td><span class="badge mpl">中等</span></td>
+              <td>文件级别传染，Firefox采用</td>
+              <td>⚠️ 需文件级合规</td>
+              <td>✅ 有</td>
+              <td><span class="strength s2">★★</span></td>
+            </tr>
+            <tr>
+              <td><strong>Unlicense</strong></td>
+              <td><span class="badge public">公有</span></td>
+              <td>无任何限制，相当于放弃版权</td>
+              <td>✅ 完全允许</td>
+              <td>❌ 无</td>
+              <td><span class="strength s0">☆</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 交互问卷 -->
+    <section class="quiz-section" id="quiz">
+      <h2>🤖 AI 智能推荐</h2>
+      <p class="quiz-intro">回答以下问题，AI 将为你推荐最合适的许可证</p>
+
+      <div class="question" id="q1">
+        <p class="q-text"><span class="q-num">Q1</span> 你的项目是否用于商业目的或闭源？</p>
+        <div class="options">
+          <button class="option-btn" data-val="commercial">是，商业/闭源项目</button>
+          <button class="option-btn" data-val="open">否，纯开源项目</button>
+          <button class="option-btn" data-val="uncertain">不确定/两者都有</button>
+        </div>
+      </div>
+
+      <div class="question hidden" id="q2">
+        <p class="q-text"><span class="q-num">Q2</span> 你是否要求衍生作品必须开源？</p>
+        <div class="options">
+          <button class="option-btn" data-val="force-open">是，必须开源（强传染）</button>
+          <button class="option-btn" data-val="allow-closed">否，允许闭源衍生</button>
+          <button class="option-btn" data-val="dont-care">无所谓</button>
+        </div>
+      </div>
+
+      <div class="question hidden" id="q3">
+        <p class="q-text"><span class="q-num">Q3</span> 你的项目是否涉及专利保护？</p>
+        <div class="options">
+          <button class="option-btn" data-val="need-patent">需要明确的专利授权</button>
+          <button class="option-btn" data-val="no-patent">不需要专利授权</button>
+          <button class="option-btn" data-val="dont-know">不确定</button>
+        </div>
+      </div>
+
+      <div class="question hidden" id="q4">
+        <p class="q-text"><span class="q-num">Q4</span> 你的项目是否会通过网络提供服务（如SaaS）？</p>
+        <div class="options">
+          <button class="option-btn" data-val="network-yes">是，会提供网络服务</button>
+          <button class="option-btn" data-val="network-no">否，纯本地/客户端使用</button>
+          <button class="option-btn" data-val="network-maybe">不确定/可能</button>
+        </div>
+      </div>
+
+      <!-- 结果 -->
+      <div class="result hidden" id="result">
+        <h3>🎯 AI 推荐结果</h3>
+        <div class="result-card" id="result-card"></div>
+        <div class="comparison-cards" id="comparison"></div>
+        <div class="legal-notice">
+          <p>⚠️ <strong>法律提示：</strong>本工具仅供参考，不能替代法律建议。选择许可证前，建议咨询专业律师。</p>
+        </div>
+        <button class="reset-btn" onclick="resetQuiz()">🔄 重新测试</button>
+      </div>
+    </section>
+
+    <!-- 各许可证详情 -->
+    <section class="details-section">
+      <h2>📖 许可证详情</h2>
+      <div class="details-grid" id="details-grid"></div>
+    </section>
+  </div>
+
+  <footer>
+    <p>Built with ❤️ · 数据来源：<a href="https://choosealicense.com" target="_blank">ChooseALicense</a> · <a href="https://opensource.org" target="_blank">OSI</a></p>
+  </footer>
+
+  <script src="licenses.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
